@@ -1,0 +1,6 @@
+framework module CaptureApp_iOS {
+  umbrella header "CaptureApp-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

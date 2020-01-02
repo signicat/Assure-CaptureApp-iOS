@@ -1,0 +1,28 @@
+{
+  "name": "CaptureApp-iOS",
+  "version": "0.1.0",
+  "summary": "Library to help capture photos of documents",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/signicat/Assure-CaptureApp-iOS",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Tiago Mendes": "tiamen@signicat.com"
+  },
+  "source": {
+    "git": "https://github.com/signicat/Assure-CaptureApp-iOS.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "CaptureApp-iOS/Classes/**/*",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "SnapKit": [
+      "~> 5.0.1"
+    ]
+  }
+}

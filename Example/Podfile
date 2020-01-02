@@ -1,0 +1,13 @@
+platform :ios, '11.1'
+
+use_frameworks!
+
+target 'CaptureApp-iOS_Example' do
+  pod 'CaptureApp-iOS', :path => '../'
+
+  target 'CaptureApp-iOS_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
