@@ -1,46 +1,11 @@
-# Assure-CaptureApp-iOS
-Library to help capture photos of documents and Selfies
+//
+//  ViewController.swift
+//  CaptureApp-iOS
+//
+//  Created by Tiago Mendes on 12/18/2019.
+//  Copyright (c) 2019 Tiago Mendes. All rights reserved.
+//
 
-## Requirements
-
-- iOS 11.0+ 
-- Swift 4.2+
-
-
-## Installation
-
-### CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-To integrate Assure-CaptureApp-iOS into your Xcode project using CocoaPods, specify it in your `Podfile` and also defines our private PodSpecs:
-
-```ruby
-source 'https://github.com/signicat/Assure-PodSpecs.git'
-platform :ios, '11.0'
-use_frameworks!
-
-target '<Your Target Name>' do
-    pod 'Assure-CaptureApp-iOS', '~> 1.0.0'
-end
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
-
-
-## Usage
-
-### Quick Start
-
-```swift
 import UIKit
 import CaptureApp_iOS
 
@@ -58,6 +23,7 @@ class ViewController: UIViewController, CaptureDelegate {
     
     @IBAction func beginCapture(_ sender: Any) {
         
+        print("Begin Capture")
         self.captureController = Capture(delegate: self, documentType: .passport, withSelfie: true)
         let vc = captureController?.run()
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -70,7 +36,9 @@ class ViewController: UIViewController, CaptureDelegate {
     
     
     func photoOut(capturedImage: UIImage?, currentStep: StepEnum) {
-                
+        
+        print("PHOTO OUT")
+        
         switch currentStep {
         case .front:
             self.documentImageView.image = capturedImage
@@ -94,4 +62,4 @@ class ViewController: UIViewController, CaptureDelegate {
     }
     
 }
-```
+
