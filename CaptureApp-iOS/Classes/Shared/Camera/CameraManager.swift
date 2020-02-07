@@ -103,8 +103,18 @@ class CameraManager: NSObject {
     }
     
     
+    func isRunning() -> Bool {
+        return captureSession?.isRunning ?? false
+    }
+    
+    
     func continueRunning(){
         captureSession?.startRunning()
+    }
+    
+    
+    func stopRunning(){
+        captureSession?.stopRunning()
     }
     
     

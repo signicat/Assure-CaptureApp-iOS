@@ -15,7 +15,8 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
     let stepEnum: StepEnum
     let documentType: DocumentTypeEnum
     internal var cameraManager: CameraManager?
-    
+    var timer = Timer()
+
     
     init(delegate: Capture, stepEnum: StepEnum, documentType: DocumentTypeEnum) {
         
@@ -54,11 +55,6 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
             isModalInPresentation = true
         }
         
-        //self.contentView.setNeedsLayout()
-        //self.contentView.layoutIfNeeded()
-        
-        /*self.contentView.adaptToStep(docType: self.documentType, stepEnum: self.stepEnum)
-        self.cameraManager?.didLayout()*/
     }
     
     
@@ -68,6 +64,29 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
             self.contentView.adaptToStep(docType: self.documentType, stepEnum: self.stepEnum)
             self.cameraManager?.didLayout()
         }
+    }
+    
+    
+    // Function that checks if the camera is working, this is useful because it was happening
+    // that when he went to background mode in the selfie mode the camera did not continue
+    @objc func checkCameraStatus(){
+        
+        if let isRunning = self.cameraManager?.isRunning() {
+            if(!isRunning) {
+                self.cameraManager?.continueRunning()
+            }
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkCameraStatus), userInfo: nil, repeats: true)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.timer.invalidate()
     }
     
     
@@ -93,6 +112,11 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
             let vc = CaptureValidationViewController(delegate: self.delegate!, stepEnum: self.stepEnum, documentType: self.documentType, docPhoto: image)
             self.delegate?.getNavController()?.pushViewController(vc, animated: true)
         }
+    }
+    
+    
+    deinit {
+        self.timer.invalidate()
     }
     
 }
