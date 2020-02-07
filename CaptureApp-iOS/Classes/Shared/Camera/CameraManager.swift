@@ -161,8 +161,11 @@ extension CameraManager : AVCapturePhotoCaptureDelegate {
         if(self.cropPhoto){
             if let cropImage = self.cropToPreviewLayer(originalImage: capturedImage) {
                 
-                let imageRightOrientation = cropImage.fixedOrientation()
-                self.delegate?.cameraPhotoOut(capturedImage: imageRightOrientation, error: nil, output: output)
+                let flippedImage = (self.cameraPosition == .front) ? UIImage(cgImage: cropImage.cgImage!, scale: cropImage.scale, orientation: .leftMirrored) : cropImage
+                if let imageRightOrientation = flippedImage.fixedOrientation() {
+                    
+                    self.delegate?.cameraPhotoOut(capturedImage: imageRightOrientation, error: nil, output: output)
+                }
             }
         } else {
             self.delegate?.cameraPhotoOut(capturedImage: capturedImage, error: nil, output: output)
