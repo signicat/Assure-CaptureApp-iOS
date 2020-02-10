@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CaptureApp-iOS'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Library to help capture photos of documents'
   s.description      = <<-DESC
 This library aims to help iOS developers to integrate the ability to capture photo of documents and selfie more easily
