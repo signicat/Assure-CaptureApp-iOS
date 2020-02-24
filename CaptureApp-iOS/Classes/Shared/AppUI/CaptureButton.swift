@@ -41,6 +41,7 @@ class CaptureButton: UIButton {
         layer.contentsScale = UIScreen.main.scale
     }
     
+    
     func getDefaultHeight() -> Float {
         return 75.0
     }

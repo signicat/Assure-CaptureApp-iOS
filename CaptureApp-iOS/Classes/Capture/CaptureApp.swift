@@ -9,15 +9,16 @@
 import Foundation
 
 
-public class Capture: NSObject {
+public class CaptureApp: NSObject {
     
     weak var delegate: CaptureDelegate?
-    let stepsEnum: [StepEnum]
+    let stepsEnum: [CaptureStepEnum]
     var stepPos: Int = 0 // Position
-    let documentType: DocumentTypeEnum
+    let documentType: CaptureDocumentTypeEnum
     var navigationController: UINavigationController?
     var currentPhotakerViewController: CaptureViewController?
     var currentPhotakerValidationViewController: CaptureValidationViewController?
+    var customization: CaptureCustomization?
     
     
     /// Initialises CaptureApp with Delegate, Document Type and the flag Selfie.
@@ -25,7 +26,7 @@ public class Capture: NSObject {
     ///   - delegate: CaptureDelegate to retrive the results of capture
     ///   - documentType: Selected document
     ///   - withSelfie: Flag to add selfie step
-    public init(delegate: CaptureDelegate, documentType: DocumentTypeEnum, withSelfie: Bool) {
+    public init(delegate: CaptureDelegate, documentType: CaptureDocumentTypeEnum, withSelfie: Bool) {
         
         self.delegate = delegate
         self.stepsEnum = documentType.getSteps(withSelfie: withSelfie)
@@ -39,7 +40,7 @@ public class Capture: NSObject {
     ///   - delegate: CaptureDelegate to retrive the results of capture
     ///   - documentType: Selected document
     ///   - stepsEnum: List of steps to be run
-    public init(delegate: CaptureDelegate, documentType: DocumentTypeEnum, stepsEnum: [StepEnum]) {
+    public init(delegate: CaptureDelegate, documentType: CaptureDocumentTypeEnum, stepsEnum: [CaptureStepEnum]) {
         
         self.delegate = delegate
         self.stepsEnum = stepsEnum
@@ -51,12 +52,21 @@ public class Capture: NSObject {
     // MARK: Public
     
     
+    /// Customize some fields at this moment you can configure the colors of the buttons
+    ///
+    /// - Parameter customization: customization struct file
+    public func customizations(_ customization: CaptureCustomization) {
+        
+        self.customization = customization
+    }
+    
+    
     /// The first step to run this library that will provide the view controller
     ///
     /// - Returns: ViewController to be present
     public func run() -> UIViewController {
                 
-        let vc = CaptureViewController(delegate: self, stepEnum: getCurrentStep(), documentType: documentType)
+        let vc = CaptureViewController(delegate: self, stepEnum: getCurrentStep(), documentType: documentType, customization: self.customization)
         self.setCurrentVC(vc: vc)
         let navController = UINavigationController(rootViewController: vc)
         self.navigationController = navController
@@ -67,7 +77,7 @@ public class Capture: NSObject {
     /// Function to prompt library to proceed to next step
     ///
     /// - Returns: Enum with the next Step
-    public func nextStep() -> StepEnum {
+    public func nextStep() -> CaptureStepEnum {
         
         if (self.stepsEnum.count == (self.stepPos + 1)) {
             print("Attention: you already passed the limit of steps nextStep() will be canceled")
@@ -76,7 +86,7 @@ public class Capture: NSObject {
         self.stepPos = self.stepPos + 1
         self.currentPhotakerValidationViewController?.stopSpinner()
         let currentStep = getCurrentStep()
-        let vc = CaptureViewController(delegate: self, stepEnum: currentStep, documentType: documentType)
+        let vc = CaptureViewController(delegate: self, stepEnum: currentStep, documentType: documentType, customization: self.customization)
         self.setCurrentVC(vc: vc)
         self.getNavController()?.pushViewController(vc, animated: true)
         return currentStep
@@ -118,7 +128,7 @@ public class Capture: NSObject {
     }
     
     
-    internal func getCurrentStep() -> StepEnum {
+    internal func getCurrentStep() -> CaptureStepEnum {
         self.stepsEnum[self.stepPos]
     }
     

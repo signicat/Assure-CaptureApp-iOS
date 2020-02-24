@@ -46,11 +46,14 @@ class CaptureView: GenericView {
         label.textColor = Theme.Color.Text.main
         label.font = Theme.Font.main(ofSize: 24, weight: .bold)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 1
         backgroundView.addSubview(subLabel)
         subLabel.textColor = Theme.Color.Text.main
         subLabel.font = Theme.Font.main(ofSize: 16, weight: .regular)
         subLabel.textAlignment = .center
         subLabel.adjustsFontSizeToFitWidth = true
+        subLabel.numberOfLines = 1
 
         backgroundView.addSubview(logoImage)
         logoImage.image = UIUtility().loadImageFromFile(fileName: "signicat_logo", ofType: "png")
@@ -117,7 +120,22 @@ class CaptureView: GenericView {
     }
     
     
-    func adaptToStep(docType: DocumentTypeEnum, stepEnum: StepEnum) {
+    func setFont(fontName: String) {
+        
+        var descriptor = UIFontDescriptor(name: fontName, size: 24.0)
+        descriptor = descriptor.addingAttributes([UIFontDescriptor.AttributeName.traits : [UIFontDescriptor.TraitKey.weight : UIFont.Weight.bold]])
+        let fontLabel = UIFont(descriptor: descriptor, size: 24.0)
+        label.font = fontLabel
+        
+        var descriptor2 = UIFontDescriptor(name: fontName, size: 16.0)
+        descriptor2 = descriptor2.addingAttributes([UIFontDescriptor.AttributeName.traits : [UIFontDescriptor.TraitKey.weight : UIFont.Weight.regular]])
+        let fontSubLabel = UIFont(descriptor: descriptor, size: 16.0)
+        subLabel.font = fontSubLabel
+        
+    }
+    
+    
+    func adaptToStep(docType: CaptureDocumentTypeEnum, stepEnum: CaptureStepEnum) {
         
         switch stepEnum {
         case .selfie:

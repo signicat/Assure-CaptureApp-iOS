@@ -11,7 +11,7 @@ import CaptureApp_iOS
 
 class ViewController: UIViewController, CaptureDelegate {
     
-    var captureController: Capture?
+    var captureController: CaptureApp?
     @IBOutlet weak var documentImageView: UIImageView!
     @IBOutlet weak var selfieImageView: UIImageView!
     
@@ -24,18 +24,25 @@ class ViewController: UIViewController, CaptureDelegate {
     @IBAction func beginCapture(_ sender: Any) {
         
         print("Begin Capture")
-        self.captureController = Capture(delegate: self, documentType: .passport, withSelfie: true)
+        self.captureController = CaptureApp(delegate: self, documentType: .passport, withSelfie: true)
+        
+        /*
+        // Help how to customize the CaptureApp
+        var customization = CaptureCustomization()
+        customization.primaryColor = [UIColor(red: 255/255, green: 1/255, blue: 2/255, alpha: 1), UIColor(red: 1, green: 40/255, blue: 201/255, alpha: 1)]
+        customization.cancelColor = [UIColor(red: 1/255, green: 66/255, blue: 132/255, alpha: 1), UIColor(red: 1, green: 40/255, blue: 201/255, alpha: 1), UIColor(red: 233, green: 40/255, blue: 77/255, alpha: 1)]
+        customization.fontName = "Papyrus"
+        self.captureController?.customizations(customization)*/
+        
         let vc = captureController?.run()
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.present(vc!, animated: true, completion: {})
-        }
+        self.present(vc!, animated: true, completion: {})
     }
     
     
     // MARK: CaptureDelegate
     
     
-    func photoOut(capturedImage: UIImage?, currentStep: StepEnum) {
+    func photoOut(capturedImage: UIImage?, currentStep: CaptureStepEnum) {
         
         print("PHOTO OUT")
         

@@ -11,26 +11,44 @@ import UIKit
 class CaptureValidationViewController: GenericViewController<CaptureValidationView> {
     
     
-    weak var delegate: Capture?
-    let stepEnum: StepEnum
-    let documentType: DocumentTypeEnum
+    weak var delegate: CaptureApp?
+    let stepEnum: CaptureStepEnum
+    let documentType: CaptureDocumentTypeEnum
     var docPhoto: UIImage
+    var customization: CaptureCustomization?
     
-    
-    init(delegate: Capture, stepEnum: StepEnum, documentType: DocumentTypeEnum, docPhoto: UIImage) {
+    init(delegate: CaptureApp, stepEnum: CaptureStepEnum, documentType: CaptureDocumentTypeEnum, docPhoto: UIImage, customization: CaptureCustomization? = nil) {
         
         self.delegate = delegate
         self.stepEnum = stepEnum
         self.documentType = documentType
         self.docPhoto = docPhoto
-        super.init()
+        self.customization = customization
         
+        super.init()
         self.delegate?.setCurrentVC(vc: self)
+        
+        if let customization = self.customization {
+            if let primaryGradientColors = customization.primaryColor {
+                self.contentView.buttonIsReadable.gradientColors = primaryGradientColors
+            }
+            if let cancelGradientColors = customization.cancelColor {
+                self.contentView.buttonTakeNewPicture.gradientColors = cancelGradientColors
+            }
+            if let fontName = customization.fontName {
+                self.contentView.setFont(fontName: fontName)
+            }
+        }
     }
     
     
     public required init?(coder: NSCoder){
         fatalError()
+    }
+    
+    
+    override func loadView() {
+        super.loadView()
     }
     
     

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public enum StepEnum {
+public enum CaptureStepEnum {
     
     case front
     case back
