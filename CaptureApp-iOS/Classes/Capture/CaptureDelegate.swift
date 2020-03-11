@@ -16,7 +16,7 @@ public protocol CaptureDelegate: class {
     /// - Parameters:
     ///   - capturedImage: Image that was capture.
     ///   - currentStep: The current step that you are in.
-    func photoOut(capturedImage:UIImage?, currentStep: StepEnum)
+    func photoOut(capturedImage:UIImage?, currentStep: CaptureStepEnum)
 
     
     /// If an error occurs this method will be triggered.

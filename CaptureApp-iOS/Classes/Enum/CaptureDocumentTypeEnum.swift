@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum DocumentTypeEnum: String, Codable, CaseIterable {
+public enum CaptureDocumentTypeEnum: String, Codable, CaseIterable {
     
     case passport = "passport"
     case drivingLicence = "driversLicense"
@@ -17,7 +17,7 @@ public enum DocumentTypeEnum: String, Codable, CaseIterable {
     case unknown
     
     public init(from decoder: Decoder) throws {
-        self = try DocumentTypeEnum(rawValue: decoder.singleValueContainer().decode(String.self)) ?? .unknown
+        self = try CaptureDocumentTypeEnum(rawValue: decoder.singleValueContainer().decode(String.self)) ?? .unknown
     }
     
     
@@ -45,9 +45,9 @@ public enum DocumentTypeEnum: String, Codable, CaseIterable {
     }
     
     
-    func getSteps(withSelfie: Bool) -> [StepEnum] {
+    func getSteps(withSelfie: Bool) -> [CaptureStepEnum] {
         
-        var steps: [StepEnum] = []
+        var steps: [CaptureStepEnum] = []
         switch self {
             case .passport:
                 steps.append(.front)

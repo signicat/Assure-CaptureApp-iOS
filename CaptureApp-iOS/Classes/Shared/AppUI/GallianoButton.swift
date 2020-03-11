@@ -14,9 +14,8 @@ class GallianoButton: UIButton {
     var gradientColors : [UIColor]
     let startPoint : CGPoint
     let endPoint : CGPoint
-    
     var halfOfButtonHeight: CGFloat = 0.0
-    
+        
     required init(gradientColors: [UIColor] = Theme.Color.Btn.gradientColor(),
                   startPoint: CGPoint = CGPoint(x: 0, y: 0.5),
                   endPoint: CGPoint = CGPoint(x: 1, y: 0.5)) {
@@ -30,6 +29,7 @@ class GallianoButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -57,21 +57,28 @@ class GallianoButton: UIButton {
     
     
     func setupGradient(gradientColors: [UIColor]) {
-        
-        // setup gradient
-        let gradient = CAGradientLayer()
-        gradient.frame = bounds
-        gradient.colors = gradientColors.map { $0.cgColor }
-        gradient.startPoint = startPoint
-        gradient.endPoint = endPoint
-        gradient.cornerRadius = 5.0
-        
-        // replace gradient as needed
-        if let oldGradient = layer.sublayers?[0] as? CAGradientLayer {
-            layer.replaceSublayer(oldGradient, with: gradient)
+            
+        if(gradientColors.count == 1 ) {
+            
+            backgroundColor = gradientColors.first
         } else {
-            layer.insertSublayer(gradient, below: nil)
+            
+            // setup gradient
+            let gradient = CAGradientLayer()
+            gradient.frame = bounds
+            gradient.colors = gradientColors.map { $0.cgColor }
+            gradient.startPoint = startPoint
+            gradient.endPoint = endPoint
+            gradient.cornerRadius = 5.0
+            
+            // replace gradient as needed
+            if let oldGradient = layer.sublayers?[0] as? CAGradientLayer {
+                layer.replaceSublayer(oldGradient, with: gradient)
+            } else {
+                layer.insertSublayer(gradient, below: nil)
+            }
         }
+
     }
     
     

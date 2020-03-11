@@ -11,20 +11,21 @@ import AVFoundation
 
 class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePresentationControllerDelegate {
     
-    weak var delegate: Capture?
-    let stepEnum: StepEnum
-    let documentType: DocumentTypeEnum
+    weak var delegate: CaptureApp?
+    let stepEnum: CaptureStepEnum
+    let documentType: CaptureDocumentTypeEnum
     internal var cameraManager: CameraManager?
     var timer = Timer()
-
+    var customization: CaptureCustomization?
     
-    init(delegate: Capture, stepEnum: StepEnum, documentType: DocumentTypeEnum) {
+    
+    init(delegate: CaptureApp, stepEnum: CaptureStepEnum, documentType: CaptureDocumentTypeEnum, customization: CaptureCustomization? = nil) {
         
         self.delegate = delegate
         self.stepEnum = stepEnum
         self.documentType = documentType
+        self.customization = customization
         super.init()
-        
     }
     
     
@@ -55,6 +56,11 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
             isModalInPresentation = true
         }
         
+        if let customization = self.customization {
+            if let fontName = customization.fontName {
+                self.contentView.setFont(fontName: fontName)
+            }
+        }
     }
     
     
@@ -109,7 +115,7 @@ class CaptureViewController: GenericViewController<CaptureView>, UIAdaptivePrese
         DispatchQueue.main.async {
             
             self.contentView.captureButton.isEnabled = true
-            let vc = CaptureValidationViewController(delegate: self.delegate!, stepEnum: self.stepEnum, documentType: self.documentType, docPhoto: image)
+            let vc = CaptureValidationViewController(delegate: self.delegate!, stepEnum: self.stepEnum, documentType: self.documentType, docPhoto: image, customization: self.customization)
             self.delegate?.getNavController()?.pushViewController(vc, animated: true)
         }
     }

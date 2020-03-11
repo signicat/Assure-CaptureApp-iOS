@@ -105,7 +105,7 @@ class CaptureValidationView: GenericView {
     }
     
     
-    func adaptToStep(docType: DocumentTypeEnum, stepEnum: StepEnum) {
+    func adaptToStep(docType: CaptureDocumentTypeEnum, stepEnum: CaptureStepEnum) {
         
         switch stepEnum {
         case .selfie:
@@ -124,6 +124,15 @@ class CaptureValidationView: GenericView {
             buttonIsReadable.setTitle("My "+docType.getStringForValidationScreen()+" is readable", for: .normal)
             break
         }
+    }
+    
+    
+    func setFont(fontName: String) {
+        
+        var descriptor = UIFontDescriptor(name: fontName, size: 15.0)
+        descriptor = descriptor.addingAttributes([UIFontDescriptor.AttributeName.traits : [UIFontDescriptor.TraitKey.weight : UIFont.Weight.medium]])
+        let fontLabel = UIFont(descriptor: descriptor, size: 15.0)
+        label.font = fontLabel
     }
     
 }

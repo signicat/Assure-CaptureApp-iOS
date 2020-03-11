@@ -46,7 +46,7 @@
 		B6F21E3FB8280F379161F7AD464780D1 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D9B891112E7E8DC9504C3CC09FB484 /* ConstraintLayoutGuideDSL.swift */; };
 		BF5DD7C358850CA9E49FACA1F9650F67 /* Pods-CaptureApp-iOS_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBCDFD61FF685C1E091FF4762D115E56 /* Pods-CaptureApp-iOS_Tests-dummy.m */; };
 		C0BA70F3202EC0C0A6E02C90129FC4C0 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08B21F65760AB725806CF81513EDD6 /* Debugging.swift */; };
-		C751BADC23AB915200ADAB7D /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAD323AB915200ADAB7D /* Capture.swift */; };
+		C751BADC23AB915200ADAB7D /* CaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAD323AB915200ADAB7D /* CaptureApp.swift */; };
 		C751BADD23AB915200ADAB7D /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAD523AB915200ADAB7D /* CaptureViewController.swift */; };
 		C751BADE23AB915200ADAB7D /* CaptureValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAD623AB915200ADAB7D /* CaptureValidationViewController.swift */; };
 		C751BADF23AB915200ADAB7D /* CaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAD723AB915200ADAB7D /* CaptureDelegate.swift */; };
@@ -60,8 +60,8 @@
 		C751BAFA23AB92C300ADAB7D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAF123AB92C300ADAB7D /* Theme.swift */; };
 		C751BAFB23AB92C300ADAB7D /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAF323AB92C300ADAB7D /* GenericViewController.swift */; };
 		C751BAFC23AB92C300ADAB7D /* GenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAF423AB92C300ADAB7D /* GenericView.swift */; };
-		C751BB0023AB933C00ADAB7D /* DocumentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAFE23AB933C00ADAB7D /* DocumentTypeEnum.swift */; };
-		C751BB0123AB933C00ADAB7D /* StepEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAFF23AB933C00ADAB7D /* StepEnum.swift */; };
+		C751BB0023AB933C00ADAB7D /* CaptureDocumentTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAFE23AB933C00ADAB7D /* CaptureDocumentTypeEnum.swift */; };
+		C751BB0123AB933C00ADAB7D /* CaptureStepEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BAFF23AB933C00ADAB7D /* CaptureStepEnum.swift */; };
 		C751BB1223AB944F00ADAB7D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BB0523AB944F00ADAB7D /* UIColor+Extension.swift */; };
 		C751BB1423AB944F00ADAB7D /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BB0723AB944F00ADAB7D /* Error+Extension.swift */; };
 		C751BB1623AB944F00ADAB7D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751BB0923AB944F00ADAB7D /* UIImage+Extension.swift */; };
@@ -71,6 +71,7 @@
 		C760305A23BA3A5B005916DC /* icon_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = C760305823BA3A5B005916DC /* icon_cross.png */; };
 		C760305D23BA3E53005916DC /* UIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C760305C23BA3E53005916DC /* UIUtility.swift */; };
 		C760305F23BB5C02005916DC /* WideUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C760305E23BB5C02005916DC /* WideUtility.swift */; };
+		C7E7D0F523FD86E400C582D3 /* CaptureCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7D0F423FD86E400C582D3 /* CaptureCustomization.swift */; };
 		D86D1153760AD1460508D11D4E9968C5 /* CaptureApp-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F9F64C803BC67401C465AACAF1DF931B /* CaptureApp-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB5CBA6C54E6B253E45C331188D53787 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EC6EE15D4D67183E93DEDF18A40981 /* ConstraintConstantTarget.swift */; };
 		DEDC25BB8DF35DDE4BA1216076531F26 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5E9E5E8037CC20D5EF42A328034DC /* ConstraintAttributes.swift */; };
@@ -176,7 +177,7 @@
 		BB481C58427FA3F4E097F6E133F8118B /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Source/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
 		C31DC8F8E9E63880140F27AB5F934FDC /* CaptureApp-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CaptureApp-iOS-Info.plist"; sourceTree = "<group>"; };
 		C7288545B5BA4393038EB1EDEC44E3CF /* CaptureApp-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CaptureApp-iOS.xcconfig"; sourceTree = "<group>"; };
-		C751BAD323AB915200ADAB7D /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		C751BAD323AB915200ADAB7D /* CaptureApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureApp.swift; sourceTree = "<group>"; };
 		C751BAD523AB915200ADAB7D /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		C751BAD623AB915200ADAB7D /* CaptureValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureValidationViewController.swift; sourceTree = "<group>"; };
 		C751BAD723AB915200ADAB7D /* CaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDelegate.swift; sourceTree = "<group>"; };
@@ -190,8 +191,8 @@
 		C751BAF123AB92C300ADAB7D /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C751BAF323AB92C300ADAB7D /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 		C751BAF423AB92C300ADAB7D /* GenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
-		C751BAFE23AB933C00ADAB7D /* DocumentTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentTypeEnum.swift; sourceTree = "<group>"; };
-		C751BAFF23AB933C00ADAB7D /* StepEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepEnum.swift; sourceTree = "<group>"; };
+		C751BAFE23AB933C00ADAB7D /* CaptureDocumentTypeEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureDocumentTypeEnum.swift; sourceTree = "<group>"; };
+		C751BAFF23AB933C00ADAB7D /* CaptureStepEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureStepEnum.swift; sourceTree = "<group>"; };
 		C751BB0523AB944F00ADAB7D /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C751BB0723AB944F00ADAB7D /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		C751BB0923AB944F00ADAB7D /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		C760305C23BA3E53005916DC /* UIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtility.swift; sourceTree = "<group>"; };
 		C760305E23BB5C02005916DC /* WideUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideUtility.swift; sourceTree = "<group>"; };
 		C760DB6BD7128CD379DCB11666451F01 /* Pods-CaptureApp-iOS_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CaptureApp-iOS_Tests-umbrella.h"; sourceTree = "<group>"; };
+		C7E7D0F423FD86E400C582D3 /* CaptureCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureCustomization.swift; sourceTree = "<group>"; };
 		CA07DBFC9598524A6744FF5106260422 /* Pods-CaptureApp-iOS_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CaptureApp-iOS_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D3EF49CDEE7AA481C7EC96638373811F /* Pods-CaptureApp-iOS_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CaptureApp-iOS_Example.modulemap"; sourceTree = "<group>"; };
 		D418A1EF57CADF7AC73AE2E19D3475E1 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
@@ -431,8 +433,9 @@
 			children = (
 				C751BAD823AB915200ADAB7D /* Views */,
 				C751BAD423AB915200ADAB7D /* ViewControllers */,
-				C751BAD323AB915200ADAB7D /* Capture.swift */,
+				C751BAD323AB915200ADAB7D /* CaptureApp.swift */,
 				C751BAD723AB915200ADAB7D /* CaptureDelegate.swift */,
+				C7E7D0F423FD86E400C582D3 /* CaptureCustomization.swift */,
 			);
 			name = Capture;
 			path = "CaptureApp-iOS/Classes/Capture";
@@ -500,8 +503,8 @@
 		C751BAFD23AB933C00ADAB7D /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				C751BAFE23AB933C00ADAB7D /* DocumentTypeEnum.swift */,
-				C751BAFF23AB933C00ADAB7D /* StepEnum.swift */,
+				C751BAFE23AB933C00ADAB7D /* CaptureDocumentTypeEnum.swift */,
+				C751BAFF23AB933C00ADAB7D /* CaptureStepEnum.swift */,
 				C751BADB23AB915200ADAB7D /* CaptureErrorEnum.swift */,
 			);
 			name = Enum;
@@ -811,13 +814,14 @@
 				C751BB1423AB944F00ADAB7D /* Error+Extension.swift in Sources */,
 				C751BAE223AB915200ADAB7D /* CaptureErrorEnum.swift in Sources */,
 				C760305F23BB5C02005916DC /* WideUtility.swift in Sources */,
-				C751BB0123AB933C00ADAB7D /* StepEnum.swift in Sources */,
+				C751BB0123AB933C00ADAB7D /* CaptureStepEnum.swift in Sources */,
 				C760305D23BA3E53005916DC /* UIUtility.swift in Sources */,
 				C751BB1A23AB944F00ADAB7D /* Data+Extension.swift in Sources */,
 				C751BAFC23AB92C300ADAB7D /* GenericView.swift in Sources */,
 				C751BADE23AB915200ADAB7D /* CaptureValidationViewController.swift in Sources */,
 				C751BAFB23AB92C300ADAB7D /* GenericViewController.swift in Sources */,
-				C751BADC23AB915200ADAB7D /* Capture.swift in Sources */,
+				C7E7D0F523FD86E400C582D3 /* CaptureCustomization.swift in Sources */,
+				C751BADC23AB915200ADAB7D /* CaptureApp.swift in Sources */,
 				C751BADD23AB915200ADAB7D /* CaptureViewController.swift in Sources */,
 				C751BAE123AB915200ADAB7D /* CaptureView.swift in Sources */,
 				C751BAF523AB92C300ADAB7D /* CameraManagerDelegate.swift in Sources */,
@@ -825,7 +829,7 @@
 				C751BADF23AB915200ADAB7D /* CaptureDelegate.swift in Sources */,
 				C751BAF923AB92C300ADAB7D /* CaptureButton.swift in Sources */,
 				C751BB1623AB944F00ADAB7D /* UIImage+Extension.swift in Sources */,
-				C751BB0023AB933C00ADAB7D /* DocumentTypeEnum.swift in Sources */,
+				C751BB0023AB933C00ADAB7D /* CaptureDocumentTypeEnum.swift in Sources */,
 				62D7ABA30A5AB50C657F477BAB2A87CF /* CaptureApp-iOS-dummy.m in Sources */,
 				C751BAE023AB915200ADAB7D /* CaptureValidationView.swift in Sources */,
 				C751BAFA23AB92C300ADAB7D /* Theme.swift in Sources */,

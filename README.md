@@ -46,7 +46,7 @@ import CaptureApp_iOS
 
 class ViewController: UIViewController, CaptureDelegate {
     
-    var captureController: Capture?
+    var captureController: CaptureApp?
     @IBOutlet weak var documentImageView: UIImageView!
     @IBOutlet weak var selfieImageView: UIImageView!
     
@@ -60,16 +60,14 @@ class ViewController: UIViewController, CaptureDelegate {
         
         self.captureController = Capture(delegate: self, documentType: .passport, withSelfie: true)
         let vc = captureController?.run()
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.present(vc!, animated: true, completion: {})
-        }
+        self.present(vc!, animated: true, completion: {})
     }
     
     
     // MARK: CaptureDelegate
     
     
-    func photoOut(capturedImage: UIImage?, currentStep: StepEnum) {
+    func photoOut(capturedImage: UIImage?, currentStep: CaptureStepEnum) {
                 
         switch currentStep {
         case .front:
@@ -95,3 +93,36 @@ class ViewController: UIViewController, CaptureDelegate {
     
 }
 ```
+
+
+## Customization
+
+You have the possibility to configure some design aspects of the CaptureApp.
+
+- primaryColor: [UIColor] 
+       You can define just one color or define an array to have gradient.
+- cancelColor: [UIColor]
+       You can define just one color or define an array to have gradient.
+- fontName: String
+       If you want to replace the default font.
+
+```swift
+...
+
+class ViewController: UIViewController, CaptureDelegate {
+    
+    ...
+    
+    @IBAction func beginCapture(_ sender: Any) {
+        
+        ...
+        // Customization CaptureApp
+        var customization = CaptureCustomization()
+        customization.primaryColor = [UIColor(red: 255/255, green: 1/255, blue: 2/255, alpha: 1), UIColor(red: 1, green: 40/255, blue: 201/255, alpha: 1)]
+        customization.cancelColor = [UIColor(red: 1/255, green: 66/255, blue: 132/255, alpha: 1), UIColor(red: 1, green: 40/255, blue: 201/255, alpha: 1), UIColor(red: 233, green: 40/255, blue: 77/255, alpha: 1)]
+        customization.fontName = "Papyrus"
+        self.captureController?.customizations(customization)
+        
+        let vc = captureController?.run()
+        ...
+    }

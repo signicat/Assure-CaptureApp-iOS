@@ -12,7 +12,7 @@ import CaptureApp_iOS
 class ViewControllerMock: UIViewController, CaptureDelegate {
     
     var lastImage: UIImage?
-    var lastImageStep: StepEnum?
+    var lastImageStep: CaptureStepEnum?
     var lastError: CaptureErrorEnum?
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class ViewControllerMock: UIViewController, CaptureDelegate {
     // MARK: CaptureDelegate
     
     
-    func photoOut(capturedImage: UIImage?, currentStep: StepEnum) {
+    func photoOut(capturedImage: UIImage?, currentStep: CaptureStepEnum) {
         
         self.lastImage = capturedImage
         self.lastImageStep = currentStep
